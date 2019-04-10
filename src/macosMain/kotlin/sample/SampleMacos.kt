@@ -2,9 +2,8 @@ package sample
 
 import kotlin.system.getTimeMillis
 
-fun hello(): String = "Hello, Kotlin/Native!"
+actual fun getSystemTimeInMillis() = getTimeMillis()
 
 fun main() {
-    println(hello())
-    println(getTimeMillis())
+    printSystemTimeMillis()
 }

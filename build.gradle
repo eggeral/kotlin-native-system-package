@@ -5,6 +5,7 @@ repositories {
     mavenCentral()
 }
 kotlin {
+    jvm()
     // For ARM, should be changed to iosArm32 or iosArm64
     // For Linux, should be changed to e.g. linuxX64
     // For MacOS, should be changed to e.g. macosX64
@@ -18,11 +19,19 @@ kotlin {
         }
     }
     sourceSets {
-        // Note: To enable common source sets please comment out 'kotlin.import.noCommonSourceSets' property
-        // in gradle.properties file and re-import your project in IDE.
-        macosMain {
+        commonMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
+            }
         }
-        macosTest {
+
+        jvmMain {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            }
+        }
+
+        macosMain {
         }
     }
 }
